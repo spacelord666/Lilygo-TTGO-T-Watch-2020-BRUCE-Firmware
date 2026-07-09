@@ -1,123 +1,59 @@
-#ifndef Pins_Arduino_h
-#define Pins_Arduino_h
-
-#include "soc/soc_caps.h"
-#include <stdint.h>
-
-#ifndef DEVICE_NAME
-#define DEVICE_NAME "Lilygo TTGO T-Watch"
+#ifdef T_DISPLAY_S3
+#include "../lilygo-t-display-s3/pins_arduino.h"
+#elif T_EMBED_1101
+#include "../lilygo-t-embed-cc1101/pins_arduino.h"
+#elif T_EMBED
+#include "../lilygo-t-embed-cc1101/pins_arduino.h"
+#elif T_DECK
+#include "../lilygo-t-deck/pins_arduino.h"
+#elif T_LORA_PAGER
+#include "../lilygo-t-lora-pager/pins_arduino.h"
+#elif ARDUINO_M5STACK_CARDPUTER
+#include "../m5stack-cardputer/pins_arduino.h"
+#elif CYD_2432S028
+#include "../CYD-2432S028/pins_arduino.h"
+#elif ARDUINO_NESSO_N1
+#include "../arduino-nesso-n1/pins_arduino.h"
+#elif ARDUINO_M5STACK_DINMETER
+#include "../m5stack-dinmeter/pins_arduino.h"
+#elif ARDUINO_M5STACK_CORE
+#include "../m5stack-core/pins_arduino.h"
+#elif ARDUINO_M5STACK_CORES3
+#include "../m5stack-cores3/pins_arduino.h"
+#elif ARDUINO_M5STACK_CORE2
+#include "../m5stack-core2/pins_arduino.h"
+#elif ARDUINO_M5STICK_C_PLUS
+#include "../m5stack-cplus1_1/pins_arduino.h"
+#elif ARDUINO_M5STICK_C_PLUS2
+#include "../m5stack-cplus2/pins_arduino.h"
+#elif ESP32S3DEVKITC1
+#include "../ESP-General/pins_arduino.h"
+#elif SMOOCHIEE_BOARD
+#include "../smoochiee-board/pins_arduino.h"
+#elif XK404
+#include "../xk404/pins_arduino.h"
+#elif REAPER
+#include "../reaper/pins_arduino.h"
+#elif T_WATCH_S3
+#include "../lilygo-t-watch-s3/pins_arduino.h"
+#elif T_WATCH
+#include "../lilygo-t-watch/pins_arduino.h"
+#elif T_DISPLAY_S3_PRO
+#include "../lilygo-t-display-s3-pro/pins_arduino.h"
+#elif TTGO
+#include "../lilygo-t-display-ttgo/pins_arduino.h"
+#elif MARAUDER_TOUCH
+#include "../marauder-touch/pins_arduino.h"
+#elif MARAUDER_MINI
+#include "../marauder-mini/pins_arduino.h"
+#elif LILYGO_T_HMI
+#include "../lilygo-t-hmi/pins_arduino.h"
+#elif ELECROW
+#include "../elecrow/pins_arduino.h"
+#elif ESP32C5_DEVKITC_1_TFT
+#include "../ESP32-C5-tft/pins_arduino.h"
+#elif ESP32C5_DEVKITC_1
+#include "../ESP32-C5/pins_arduino.h"
+#elif NM_CYD_ESP32C5
+#include "../nm-cyd-c5/pins_arduino.h"
 #endif
-
-#define ADC_EN 14
-#define ANALOG_BAT_PIN 34
-
-#define SPI_SS_PIN 33
-#define SPI_MOSI_PIN 15
-#define SPI_MISO_PIN 2
-#define SPI_SCK_PIN 14
-
-#define SDCARD_CS 13
-#define SDCARD_SCK SPI_SCK_PIN
-#define SDCARD_MISO SPI_MISO_PIN
-#define SDCARD_MOSI SPI_MOSI_PIN
-
-#define USE_CC1101_VIA_SPI
-#define CC1101_GDO0_PIN 39
-#define CC1101_SS_PIN 32
-#define CC1101_MOSI_PIN SPI_MOSI_PIN
-#define CC1101_SCK_PIN SPI_SCK_PIN
-#define CC1101_MISO_PIN SPI_MISO_PIN
-
-#define USE_NRF24_VIA_SPI
-#define NRF24_CE_PIN 37
-#define NRF24_SS_PIN 38
-#define NRF24_MOSI_PIN SPI_MOSI_PIN
-#define NRF24_SCK_PIN SPI_SCK_PIN
-#define NRF24_MISO_PIN SPI_MISO_PIN
-
-#define USE_W5500_VIA_SPI
-#define W5500_SS_PIN 38
-#define W5500_MOSI_PIN SPI_MOSI_PIN
-#define W5500_SCK_PIN SPI_SCK_PIN
-#define W5500_MISO_PIN SPI_MISO_PIN
-#define W5500_INT_PIN 37
-
-static const uint8_t SS = SPI_SS_PIN;
-static const uint8_t MOSI = SPI_MOSI_PIN;
-static const uint8_t SCK = SPI_MISO_PIN;
-static const uint8_t MISO = SPI_SCK_PIN;
-
-// Main I2C Bus (AXP202, BMA423, PCF8563)
-#define GROVE_SDA 21
-#define GROVE_SCL 22
-static const uint8_t SDA = GROVE_SDA;
-static const uint8_t SCL = GROVE_SCL;
-
-// Touch I2C Bus (FT6236) - separate I2C
-#define TOUCH_SDA 23
-#define TOUCH_SCL 32
-
-// TFT_eSPI display
-#define USER_SETUP_LOADED
-#define ST7789_DRIVER
-#define TFT_WIDTH 240
-#define TFT_HEIGHT 240
-#define CGRAM_OFFSET
-#define TFT_MOSI 19
-#define TFT_SCLK 18
-#define TFT_CS 5
-#define TFT_DC 27
-#define TFT_RST -1
-#define TFT_BL 12
-#define TFT_BACKLIGHT_ON HIGH
-#define SMOOTH_FONT 1
-#define SPI_FREQUENCY 40000000
-#define SPI_READ_FREQUENCY 6000000
-
-// Display Setup
-#define HAS_SCREEN
-#define ROTATION 2
-#define MINBRIGHT (uint8_t)1
-
-// Font Sizes
-#define FP 1
-#define FM 2
-#define FG 3
-
-// Serial / GPS
-#define SERIAL_TX 33
-#define SERIAL_RX 34
-
-#define GPS_SERIAL_TX SERIAL_TX
-#define GPS_SERIAL_RX SERIAL_RX
-
-#define BAD_TX SERIAL_TX
-#define BAD_RX SERIAL_RX
-
-// Buttons & Navigation
-#define BTN_ALIAS "\"Mid\""
-#define HAS_BTN 1
-#define BTN_PIN 36
-#define BTN_ACT LOW
-
-// IR pins
-#define TXLED 13
-#define RXLED 15
-
-#define LED_ON HIGH
-#define LED_OFF LOW
-
-// Battery
-#define BAT_PIN 34
-
-// Mic (SPM1423 on 2020 V3, otherwise via backplane)
-#define PIN_CLK 44
-#define PIN_DATA 47
-
-// Backplane pins
-#define MOTOR_PIN 4
-#define I2S_BCK 26
-#define I2S_WS 25
-#define I2S_DOUT 33
-
-#endif /* Pins_Arduino_h */
